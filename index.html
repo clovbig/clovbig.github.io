@@ -161,18 +161,46 @@
         Sign up to stay informed about our progress!</p> <!-- Change the description text here -->
 
         <!-- Email Form -->
-        <form class="email-form" action="https://formsubmit.co/info@saisir.ch" method="POST"> <!-- Replace with your email -->
+        <form class="email-form" action="https://formsubmit.co/info@saisir.ch" method="POST" onsubmit="showConfirmation(event);"> <!-- Replace with your email -->
             <input type="email" name="email" placeholder="Enter your email" required>
             <button type="submit">Keep Me Informed</button>
         </form>
 
         <!-- Confirmation message that will appear after submission -->
         <p id="confirmation-message" style="display:none;">Thank you! We'll keep you informed.</p>
+        <p id="error-message" style="display:none; color: red; font-size: 1.1rem;">Please enter a valid email address.</p>
         
-        <script>
-        function showConfirmation() {
-            document.getElementById('confirmation-message').style.display = 'block';
-        }
+        </script>
+            // Function to check email validity using a regex pattern
+            function validateEmail(email) {
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailPattern.test(email);
+            }
+        
+            function showConfirmation(event) {
+                event.preventDefault(); // Prevent the default form submission behavior
+        
+                var emailInput = document.getElementById('emailInput').value;
+        
+                // Validate email
+                if (validateEmail(emailInput)) {
+                    // Hide error and show confirmation message
+                    document.getElementById('error-message').style.display = 'none';
+                    document.getElementById('confirmation-message').style.display = 'block';
+        
+                    // Disable the submit button to avoid multiple submissions
+                    event.target.querySelector('button').disabled = true;
+        
+                    // Submit the form after showing confirmation message
+                    setTimeout(function() {
+                        document.getElementById('emailForm').submit(); // Submit the form
+                    }, 500); // Delay to show confirmation for 0.5 second
+                } else {
+                    // Show error if email is invalid
+                    document.getElementById('confirmation-message').style.display = 'none';
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            }
         </script>
 
         <!-- Contact Info -->
