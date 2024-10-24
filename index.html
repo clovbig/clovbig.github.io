@@ -103,13 +103,45 @@
         }
 
         /* Responsive styles */
+        /* Mobile-Specific Adjustments */
         @media only screen and (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            /* Mobile view container adjustments */
+            .container {
+                padding: 20px;
+                width: 95%; /* Use nearly full screen width on mobile */
+                max-width: none; /* Remove the fixed max width on mobile */
+                box-shadow: none; /* Remove shadow for mobile simplicity */
             }
-
+        
+            /* Adjust headline size for mobile */
+            h1 {
+                font-size: 2rem; /* Smaller headline on mobile */
+            }
+        
+            /* Adjust subheadline size for mobile */
+            p {
+                font-size: 1rem; /* Smaller text for mobile */
+            }
+        
+            /* Full-width input and button for mobile */
             input[type="email"] {
-                width: 100%;
+                width: 100%; /* Full width input on mobile */
+                font-size: 1rem;
+            }
+        
+            button {
+                width: 100%; /* Full width button */
+                font-size: 1rem;
+                padding: 10px;
+            }
+        
+            /* Adjust social icon size for mobile */
+            .social-links img {
+                width: 25px;
+            }
+        
+            .contact-info {
+                font-size: 0.9rem; /* Smaller text size for contact info */
             }
         }
     </style>
