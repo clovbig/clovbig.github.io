@@ -164,6 +164,10 @@
         <form class="email-form" id="emailForm" action="https://formsubmit.co/info@saisir.ch" method="POST" onsubmit="showConfirmation(event);"> <!-- Replace with your email -->
             <input type="email" id="emailInput" name="email" placeholder="Enter your email" required>
             <button type="submit">Keep Me Informed</button>
+            <!-- Hidden fields for autoresponse -->
+            <input type="hidden" name="_autoresponse" value="Thank you for signing up! We will keep you informed about our progress.">
+            <input type="hidden" name="_subject" value="Thank you for signing up to SaisiR!">
+
         </form>
 
         <!-- Confirmation message that will appear after submission -->
@@ -171,37 +175,51 @@
         <p id="error-message" style="display:none; color: red; font-size: 1.1rem;">Please enter a valid email address.</p>
         
         <script>
-            // Function to check email validity using a regex pattern
             function validateEmail(email) {
                 var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return emailPattern.test(email);
             }
-        
-            function showConfirmation(event) {
-                event.preventDefault(); // Prevent the default form submission behavior
-        
+
+            document.getElementById('emailForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
                 var emailInput = document.getElementById('emailInput').value;
-        
+
                 // Validate email
                 if (validateEmail(emailInput)) {
                     // Hide error and show confirmation message
                     document.getElementById('error-message').style.display = 'none';
                     document.getElementById('confirmation-message').style.display = 'block';
-        
+
                     // Disable the submit button to avoid multiple submissions
-                    event.target.querySelector('button').disabled = true;
-        
-                    // Submit the form after showing confirmation message
-                    setTimeout(function() {
-                        document.getElementById('emailForm').submit(); // Submit the form
-                    }, 1000); // Delay to show confirmation for 0.5 second
+                    document.querySelector('button').disabled = true;
+
+                    // Send the form via AJAX
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'https://formsubmit.co/info@saisir.ch', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                console.log("Form successfully submitted");
+                            } else {
+                                document.getElementById('confirmation-message').textContent = "There was an issue with your submission. Please try again.";
+                                console.log("Error submitting form", xhr.status, xhr.statusText);
+                            }
+                        }
+                    };
+
+                    var formData = new FormData(document.getElementById('emailForm'));
+                    xhr.send(new URLSearchParams(formData).toString());
                 } else {
-                    // Show error if email is invalid
+                    // Show error message if email is invalid
                     document.getElementById('confirmation-message').style.display = 'none';
                     document.getElementById('error-message').style.display = 'block';
                 }
-            }
+            });
         </script>
+
 
         <!-- Contact Info -->
         <div class="contact-info">
