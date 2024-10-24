@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coming Soon</title>
+    <style>
+        /* General Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Galvji, sans-serif;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, rgba(102, 203, 200, 0.3), rgba(193, 82, 158, 0.3)); /* Gradient background */
+            /*background-image: url('background.jpg'); /* Change the background image here */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Center content on the page */
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Logo styling */
+        .logo img {
+            width: 150px; /* Adjust the size of your logo here */
+            margin-bottom: 20px;
+        }
+
+        /* Headline Styling */
+        h1 {
+            font-size: 3rem;
+            color: #333; /* Change the main headline color here */
+        }
+
+        /* Subheadline Styling */
+        p {
+            font-size: 1.3rem;
+            color: #555; /* Change subheadline text color here */
+            margin: 10px 0;
+        }
+
+        /* Email form styles */
+        .email-form {
+            margin-top: 20px;
+        }
+
+        input[type="email"] {
+            padding: 10px;
+            width: 300px;
+            max-width: 90%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #C1529E;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #EA9DD6;
+        }
+
+        /* Contact info styling */
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* LinkedIn icon styling */
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links img {
+            width: 30px; /* Adjust the size of the social icons */
+            margin: 0 10px;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            input[type="email"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo">
+            <img src="logo_1.svg" alt="Your Logo"> <!-- Replace 'logo.png' with the path to your actual logo image -->
+        </div>
+
+        <!-- Headline Section -->
+        <h1>Exciting Things Are Coming!</h1> <!-- Change the main headline text here -->
+        <p>We’re working on an innovative solution for stroke rehabilitation.<br> 
+        Combining neuroscience-based brain-computer interfaces with advanced software,<br> 
+        our solution aims to help severely impaired patients regain motor function.<br>
+        Sign up to stay informed about our progress!</p> <!-- Change the description text here -->
+
+        <!-- Email Form -->
+        <form class="email-form" action="https://formsubmit.co/youremail@example.com" method="POST"> <!-- Replace with your email -->
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Keep Me Informed</button>
+        </form>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <p>Questions? Reach us at <a href="mailto:info@saisir.ch">info@saisir.ch</a></p> <!-- Replace with your email -->
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="https://www.linkedin.com/company/saisir-science-for-rehabilitation/" target="_blank"> <!-- Replace with your LinkedIn profile URL -->
+                <img src="linkedin_icon.png" alt="LinkedIn"> <!-- Replace 'linkedin-icon.png' with the path to your LinkedIn icon -->
+            </a>
+        </div>
+    </div>
+</body>
+</html>
