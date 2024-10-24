@@ -170,53 +170,6 @@
         <p id="confirmation-message" style="display:none;">Thank you! We'll keep you informed.</p>
         <p id="error-message" style="display:none; color: red; font-size: 1.1rem;">Please enter a valid email address.</p>
         
-        <script>
-            function validateEmail(email) {
-                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return emailPattern.test(email);
-            }
-
-            document.getElementById('emailForm').addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
-
-                var emailInput = document.getElementById('emailInput').value;
-
-                // Validate email
-                if (validateEmail(emailInput)) {
-                    // Hide error and show confirmation message
-                    document.getElementById('error-message').style.display = 'none';
-                    document.getElementById('confirmation-message').style.display = 'block';
-
-                    // Disable the submit button to avoid multiple submissions
-                    document.querySelector('button').disabled = true;
-
-                    // Send the form via AJAX
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'https://formsubmit.co/info@saisir.ch', true);
-                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState === XMLHttpRequest.DONE) {
-                            if (xhr.status === 200) {
-                                console.log("Form successfully submitted");
-                            } else {
-                                document.getElementById('confirmation-message').textContent = "There was an issue with your submission. Please try again.";
-                                console.log("Error submitting form", xhr.status, xhr.statusText);
-                            }
-                        }
-                    };
-
-                    var formData = new FormData(document.getElementById('emailForm'));
-                    xhr.send(new URLSearchParams(formData).toString());
-                } else {
-                    // Show error message if email is invalid
-                    document.getElementById('confirmation-message').style.display = 'none';
-                    document.getElementById('error-message').style.display = 'block';
-                }
-            });
-        </script>
-
-
         <!-- Contact Info -->
         <div class="contact-info">
             <p>Questions? Reach us at <a href="mailto:info@saisir.ch">info@saisir.ch</a></p> <!-- Replace with your email -->
